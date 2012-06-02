@@ -5,10 +5,16 @@
 <div class='errship'>
   <h1 class='error_code'><%= status_code %></h1>
   <% if errship_scope %>
-  <h2><%= t "errship.#{status_code}.#{errship_scope}.title" %></h2>
-  <p><%= t "errship.#{status_code}.#{errship_scope}.description" %></p>
+    <h2><%= t "errship.#{status_code}.#{errship_scope}.title" %></h2>
+    <% t("errship.#{status_code}.#{errship_scope}.description").map do |key, value| %>
+      <p id=<%= key%> ><%= value %></p>
+    <% end %>
   <% else %>
-  <h2><%= t "errship.#{status_code}.title" %></h2>
-  <p><%= t "errship.#{status_code}.description" %></p>
+    <h2><%= t "errship.#{status_code}.title" %></h2>
+    <% t("errship.#{status_code}.description").map do |key, value| %>
+      <p id=<%= key%> ><%= value %></p>
+    <% end %>
   <% end %>
 </div>
+
+<%= render "pages/footer" %>
